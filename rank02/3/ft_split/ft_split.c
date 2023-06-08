@@ -12,6 +12,7 @@
 
 #include <stdlib.h>
 #include <stdbool.h>
+#include <stdio.h>
 
 bool	is_del(char c)
 {
@@ -33,24 +34,51 @@ int	count_words(char *str)
 	}
 	return (count);
 }
-/*
+
+char	*ft_strncpy(char *src)
+{
+	int		len;
+	int		i;
+	char	*ptr;
+
+	i = 0;
+	while (!is_del(src[i]))
+		i++;
+	len = i;
+	ptr = malloc((len + 1) * sizeof * ptr);
+	if (!ptr)
+		return (NULL);
+	i = 0;
+	while (i < len)
+	{
+		ptr[i] = src[i];
+		i++;
+	}
+	ptr[i] = '\0';
+	return (ptr);
+}
+
 char	**ft_split(char *str)
 {
-	int	i = 0;
-	int	wc = count_words(str);
-	char **out = malloc((wc + 1) * sizeof *out);
+	char	**arr;
+	int		words;
+	int		i;
+	int		k;
+
+	words = count_words(str);
+	arr = malloc((words + 1) * sizeof * arr);
+	if (!arr)
+		return (NULL);
+	i = 0;
+	k = 0;
 	while (str[i])
 	{
 		while (is_del(str[i]))
 			i++;
-		j = i;
-		while (!is_del(str[i]))
-			i++;
-		if (i < j)
-		{
-			out[k] = malloc((i - j) + 1 * sizeof(char));
-			ft_strncpy()
-		}
+		if (is_del(str[i - 1]) && !is_del(str[i]))
+			arr[k++] = ft_strncpy(&str[i]);
 		i++;
 	}
-}*/
+	arr[k] = '\0';
+	return (arr);
+}
