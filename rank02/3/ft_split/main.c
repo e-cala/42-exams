@@ -22,12 +22,18 @@ int	main(void)
 {
 	//char	*str = "hola como estas .";
 	//printf("count_words:		%i\n", count_words(str));
-	char	**split = ft_split("hola como estas . ");
+	char	**split = ft_split("hola como estas .  ");
 	int	i = 0;
 	while (split[i])
 	{
 		printf("[%i]%s\n",i, split[i]);
 		i++;
+	}
+	free(split);
+	while (i >= 0)
+	{
+		free(split[i]);
+		i--;
 	}
 	return (0);
 }
