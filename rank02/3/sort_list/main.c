@@ -9,6 +9,20 @@ void	print_linked_list(t_list *head)
 	}
 }
 
+void	free_linked_list(t_list *head)
+{
+	t_list	*current;
+	t_list	*tmp;
+
+	current = head;
+	while (current)
+	{
+		tmp = current;
+		current = current->next;
+		free(tmp);
+	}
+}
+
 int	ascending(int a, int b)
 {
 	return (a <= b);
@@ -40,6 +54,7 @@ int	main(void)
 	printf("\nafter	-->	");
 	print_linked_list(head);
 	printf("\n");
-
+	free_linked_list(head);
+	
 	return (0);
 }
