@@ -40,8 +40,9 @@ void	expand_str(char *str)
 			continue ;
 		}
 		else if (is_del(str[i]) && !is_del(str[i + 1]))
-			write(1, "  ", 2);
-		ft_putchar(str[i]);
+			write(1, "   ", 3);
+		if (!is_del(str[i]))
+			ft_putchar(str[i]);
 		i++;
 	}
 }
