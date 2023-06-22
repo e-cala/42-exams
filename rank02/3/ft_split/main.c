@@ -17,23 +17,21 @@
 int	count_words(char *str);
 char	**ft_split(char *str);
 
-
-int	main(void)
+int main(void)
 {
-	//char	*str = "hola como estas .";
-	//printf("count_words:		%i\n", count_words(str));
-	char	**split = ft_split("hola como estas .  ");
-	int	i = 0;
-	while (split[i])
-	{
-		printf("[%i]%s\n",i, split[i]);
-		i++;
-	}
-	free(split);
-	while (i >= 0)
-	{
-		free(split[i]);
-		i--;
-	}
-	return (0);
+        char    *str = " hola como estas";
+        int     i = 0;
+
+//      printf("count_words:\t%i\n", count_words(str, del));
+//      printf("ft_strcpy  :\t%s\n", ft_strcpy(str, del));
+
+        char    **arr = ft_split(str);
+        while (arr[i])
+        {
+                printf("split:\t%s\n", arr[i]);
+                free(arr[i]);
+                i++;
+        }
+        free(arr);
+        return (0);
 }
