@@ -25,7 +25,7 @@ void	print_hex(int num)
 {
 	char	*base = "0123456789abcdef";
 
-	if (num > 16)
+	if (num >= 16)
 		print_hex(num / 16);
 	ft_putchar(base[num % 16]);
 }
