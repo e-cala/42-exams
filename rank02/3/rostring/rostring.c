@@ -11,6 +11,24 @@ bool	is_del(char c)
 	return (c == ' ' || c == '\t' || c == '\0');
 }
 
+int	count_words(char *str)
+{
+	int	i;
+	int	count;
+
+	if (!str)
+		return (-1);
+	i = 0;
+	count = 0;
+	while (str[i])
+	{
+		if (!is_del(str[i]) && is_del(str[i + 1]))
+			count++;
+		i++;
+	}
+	return (count);
+}
+
 void	rostring(char *str)
 {
 	int	i;
@@ -20,7 +38,8 @@ void	rostring(char *str)
 		i++;
 	while (!is_del(str[i]))
 		i++;
-	i++;
+	while (is_del(str[i]))
+		i++;
 	while (str[i])
 	{
 		if (is_del(str[i]) && is_del(str[i + 1]))
@@ -36,14 +55,24 @@ void	rostring(char *str)
 		str++;
 	while (!is_del(*str))
 		ft_putchar(*str++);
-	ft_putchar('\n');
 }
 
 int	main(int argc, char **argv)
 {
-	if (argc >= 2)
+	int	words;
+	int	i;
+
+	words = count_words(argv[1]);
+	i = 0;
+	if (argc >= 2 && words == 1)
+	{
+		while (is_del(argv[1][i]))
+			i++;
+		while (!is_del(argv[1][i]))
+			ft_putchar(argv[1][i++]);
+	}
+	else if (argc >= 2 && words > 1)
 		rostring(argv[1]);
-	else
-		ft_putchar('\n');
+	ft_putchar('\n');
 	return (0);
 }
