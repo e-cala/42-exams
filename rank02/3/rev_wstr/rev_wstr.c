@@ -1,5 +1,11 @@
 #include <unistd.h>
 #include <stdio.h>
+#include <stdbool.h>
+
+bool	is_del(char c)
+{
+	return (c == ' ' || c == '\t' || c == '\0');
+}
 
 void	ft_putchar(char c)
 {
@@ -22,40 +28,29 @@ void	rev_wstr(char *str)
 	char	*rev;
 
 	len = ft_strlen(str);
-	rev = NULL;
-	len--;
-	while (str[len])
+	while (len >= 0)
 	{
-		if (str[len - 1] == ' ')
+		if (is_del(str[len - 1]))
 		{
 			rev = &str[len];
-			while (*rev && *rev != ' ')
-			{
-				ft_putchar(*rev);
-				rev++;
-			}
+			while (!is_del(*rev))
+				ft_putchar(*rev++);
 			ft_putchar(' ');
 		}
 		else if (len == 0)
 		{
 			rev = &str[len];
-			while (*rev && *rev != ' ')
-			{
-				ft_putchar(*rev);
-				rev++;
-			}
+			while (!is_del(*rev))
+				ft_putchar(*rev++);
 		}
 		len--;
 	}
-	ft_putchar('\n');
 }
 
 int	main(int argc, char **argv)
 {
 	if (argc == 2)
-	{
 		rev_wstr(argv[argc - 1]);
-	}
 	ft_putchar('\n');
 	return (0);
 }
