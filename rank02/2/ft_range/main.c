@@ -18,7 +18,7 @@ int     main(void)
         len = arr_length(-1, 2);
         arr = ft_range(-1, 2);
         printf("(-1, 2)	-->	");
-        for (int i = 0; i < len; i++)
+	for (int i = 0; i < len; i++)
         {
                 printf("%d ", arr[i]);
         }
