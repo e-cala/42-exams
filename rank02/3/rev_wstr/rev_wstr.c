@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   rev_wstr.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ecabanas <ecabanas@student.42barcel>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/07/05 13:36:56 by ecabanas          #+#    #+#             */
+/*   Updated: 2023/07/05 13:37:17 by ecabanas         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <unistd.h>
 #include <stdio.h>
 #include <stdbool.h>
@@ -24,7 +36,7 @@ int	ft_strlen(char *str)
 
 void	rev_wstr(char *str)
 {
-	int	len;
+	int		len;
 	char	*rev;
 
 	len = ft_strlen(str);

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ecabanas <ecabanas@student.42barcel>       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/07/05 13:32:17 by ecabanas          #+#    #+#             */
+/*   Updated: 2023/07/05 13:33:32 by ecabanas         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <unistd.h>
 #include <stdarg.h>
 
@@ -30,7 +42,7 @@ static void	ft_putnbr(int nbr, int base, int *plength)
 int	ft_printf(const char *str, ...)
 {
 	va_list	args;
-	int	plength;
+	int		plength;
 
 	plength = 0;
 	va_start(args, str);
