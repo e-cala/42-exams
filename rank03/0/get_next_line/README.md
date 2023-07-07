@@ -21,3 +21,6 @@ Make sure that your function behaves wel when it reads from a file, from the sta
 
 No call to another function will be done on the file descriptor between 2 calls of get_next_line. Finally we consider that get_next_line has an undefined behaviour when reading from a binary file.
 
+
+## Source
+https://github.com/ComlanGiovanni/42-Exam-Rank-03/tree/main/get_next_line/short-version
