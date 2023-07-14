@@ -19,7 +19,7 @@ char	**ft_split(char *str);
 
 int main(void)
 {
-        char    *str = " hola como estas";
+        char    *str = "  hola como estas ";
         int     i = 0;
 
 //      printf("count_words:\t%i\n", count_words(str, del));

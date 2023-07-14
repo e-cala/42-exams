@@ -24,13 +24,12 @@ int     count_words(char *str)
         int     i;
         int     count;
 
-        if (!str)
-                return (-1);
         i = 0;
-        count = 1;
+        count = 0;
         while (str[i])
         {
-                if (!is_del(str[i]) && is_del(str[i + 1]))
+                if (!is_del(str[i]) 
+			&& (is_del(str[i + 1])) || str[i] == '\0')
                         count++;
                 i++;
         }
@@ -39,7 +38,6 @@ int     count_words(char *str)
 
 char    *ft_strcpy(char *str)
 {
-        int     i;
         int     len;
         char    *ptr;
 
@@ -49,13 +47,12 @@ char    *ft_strcpy(char *str)
         ptr = malloc((len + 1) * sizeof *ptr);
         if (!ptr)
                 return (NULL);
-        i = 0;
-        while (i < len)
+        ptr[len--] = '\0';
+	while (len >= 0)
         {
-                ptr[i] = str[i];
-                i++;
-        }
-        ptr[len] = '\0';
+                ptr[len] = str[len];
+        	len--;
+	}
         return (ptr);
 }
 
