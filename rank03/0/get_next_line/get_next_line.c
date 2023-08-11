@@ -1,7 +1,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 
-#define BUFFER_SIZE 4
+//#define BUFFER_SIZE 4
 
 static int	ft_strlen(char *str)
 {
@@ -23,7 +23,7 @@ static char	*ft_strdup(char *str)
 	if (!duplicate)
 		return (NULL);
 	duplicate[len] = '\0';
-	while (duplicate-- > 0)
+	while (len-- > 0)
 		duplicate[len] = str[len];
 	return (duplicate);
 }
