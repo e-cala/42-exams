@@ -20,6 +20,8 @@ static int	ft_putchar(char c)
 
 static void	ft_putstr(char *str, int *plength)
 {
+	if (!str)
+		str = "(null)";
 	while (*str)
 		*plength += ft_putchar(*str++);
 }
@@ -48,8 +50,7 @@ int	ft_printf(const char *str, ...)
 	va_start(args, str);
 	while (*str)
 	{
-		if (*str == '%'
-			&& (*(str + 1) == 's' || *(str + 1) == 'd' || *(str + 1) == 'x'))
+		if ((*str == '%') && *(str + 1))
 		{
 			str++;
 			if (*str == 's')
