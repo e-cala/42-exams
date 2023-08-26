@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: ecabanas <ecabanas@student.42barcel>       +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/05 13:32:17 by ecabanas          #+#    #+#             */
-/*   Updated: 2023/08/26 12:52:19 by ecabanas         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include <unistd.h>
 #include <stdarg.h>
 
@@ -18,35 +6,35 @@ static int	ft_putchar(char c)
 	return (write(1, &c, 1));
 }
 
-static void	ft_putstr(char *str, int *plength)
+static void	ft_putstr(char *str, int *len)
 {
 	if (!str)
 		str = "(null)";
 	while (*str)
-		*plength += ft_putchar(*str++);
+		*len += ft_putchar(*str++);
 }
 
-static void	ft_putnbr(int nbr, int base, int *plength)
+static void	ft_putnbr(long int nbr, int base, int *len)
 {
-	char	*hexadecimal;
+	char	*hex;
 
-	hexadecimal = "0123456789abcdef";
+	hex = "0123456789abcdef";
 	if (nbr < 0)
 	{
 		nbr *= -1;
-		*plength += ft_putchar('-');
+		*len += ft_putchar('-');
 	}
 	if (nbr >= base)
-		ft_putnbr(nbr / base, base, plength);
-	*plength += ft_putchar(hexadecimal[nbr % base]);
+		ft_putnbr(nbr / base, base, len);
+	*len += ft_putchar(hex[nbr % base]);
 }
 
 int	ft_printf(const char *str, ...)
 {
 	va_list	args;
-	int		plength;
+	int		len;
 
-	plength = 0;
+	len = 0;
 	va_start(args, str);
 	while (*str)
 	{
@@ -54,16 +42,16 @@ int	ft_printf(const char *str, ...)
 		{
 			str++;
 			if (*str == 's')
-				ft_putstr(va_arg(args, char *), &plength);
+				ft_putstr(va_arg(args, char *), &len);
 			else if (*str == 'd')
-				ft_putnbr(va_arg(args, int), 10, &plength);
+				ft_putnbr(va_arg(args, int), 10, &len);
 			else if (*str == 'x')
-				ft_putnbr(va_arg(args, unsigned int), 16, &plength);
+				ft_putnbr(va_arg(args, unsigned int), 16, &len);
 		}
 		else
-			plength += ft_putchar(*str);
+			len += ft_putchar(*str);
 		str++;
 	}
 	va_end(args);
-	return (plength);
+	return (len);
 }
