@@ -6,7 +6,7 @@
 /*   By: ecabanas <ecabanas@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/05 13:32:17 by ecabanas          #+#    #+#             */
-/*   Updated: 2023/07/05 13:33:32 by ecabanas         ###   ########.fr       */
+/*   Updated: 2023/08/26 12:52:19 by ecabanas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static void	ft_putnbr(int nbr, int base, int *plength)
 {
 	char	*hexadecimal;
 
-	hexadecimal = "0123456789ABCDEF";
+	hexadecimal = "0123456789abcdef";
 	if (nbr < 0)
 	{
 		nbr *= -1;
